@@ -1,0 +1,43 @@
+[Thu Apr 23 19:38:43 2026] PHP 8.3.6 Development Server (http://localhost:8000) started
+[Thu Apr 23 19:43:09 2026] [::1]:34954 Accepted
+[Thu Apr 23 19:43:09 2026] [::1]:34954 [200]: GET /login.php
+[Thu Apr 23 19:43:09 2026] [::1]:34954 Closing
+[Thu Apr 23 19:43:09 2026] [::1]:34970 Accepted
+[Thu Apr 23 19:43:09 2026] [::1]:34978 Accepted
+[Thu Apr 23 19:43:09 2026] [::1]:34986 Accepted
+[Thu Apr 23 19:43:09 2026] [::1]:34970 [200]: GET /js/theme.js
+[Thu Apr 23 19:43:09 2026] [::1]:34978 [200]: GET /js/config.js
+[Thu Apr 23 19:43:09 2026] [::1]:34986 [200]: GET /js/auth.js
+[Thu Apr 23 19:43:09 2026] [::1]:34970 Closing
+[Thu Apr 23 19:43:09 2026] [::1]:34978 Closing
+[Thu Apr 23 19:43:09 2026] [::1]:34986 Closing
+[Thu Apr 23 19:43:12 2026] [::1]:34998 Accepted
+[Thu Apr 23 19:43:12 2026] [::1]:34998 [200]: GET /index.php
+[Thu Apr 23 19:43:12 2026] [::1]:34998 Closing
+[Thu Apr 23 19:43:12 2026] [::1]:35000 Accepted
+[Thu Apr 23 19:43:12 2026] [::1]:35006 Accepted
+[Thu Apr 23 19:43:12 2026] [::1]:35018 Accepted
+[Thu Apr 23 19:43:12 2026] [::1]:35028 Accepted
+[Thu Apr 23 19:43:12 2026] [::1]:35034 Accepted
+[Thu Apr 23 19:43:12 2026] [::1]:35000 [404]: GET /css/style.css - No such file or directory
+[Thu Apr 23 19:43:12 2026] [::1]:35000 Closing
+[Thu Apr 23 19:43:12 2026] [::1]:35006 [200]: GET /js/app.js
+[Thu Apr 23 19:43:12 2026] [::1]:35006 Closing
+[Thu Apr 23 19:43:12 2026] [::1]:35018 [200]: GET /js/theme.js
+[Thu Apr 23 19:43:12 2026] [::1]:35018 Closing
+[Thu Apr 23 19:43:12 2026] [::1]:35028 [200]: GET /js/config.js
+[Thu Apr 23 19:43:12 2026] [::1]:35028 Closing
+[Thu Apr 23 19:43:12 2026] [::1]:35034 [200]: GET /js/auth.js
+[Thu Apr 23 19:43:12 2026] [::1]:35034 Closing
+[Thu Apr 23 19:43:12 2026] [::1]:35040 Accepted
+[Thu Apr 23 19:43:12 2026] [::1]:35040 [200]: GET /login.php
+[Thu Apr 23 19:43:12 2026] [::1]:35040 Closing
+[Thu Apr 23 19:43:12 2026] [::1]:35042 Accepted
+[Thu Apr 23 19:43:12 2026] [::1]:35056 Accepted
+[Thu Apr 23 19:43:12 2026] [::1]:35058 Accepted
+[Thu Apr 23 19:43:12 2026] [::1]:35042 [200]: GET /js/theme.js
+[Thu Apr 23 19:43:12 2026] [::1]:35056 [200]: GET /js/config.js
+[Thu Apr 23 19:43:12 2026] [::1]:35058 [200]: GET /js/auth.js
+[Thu Apr 23 19:43:12 2026] [::1]:35042 Closing
+[Thu Apr 23 19:43:12 2026] [::1]:35056 Closing
+[Thu Apr 23 19:43:12 2026] [::1]:35058 Closing
