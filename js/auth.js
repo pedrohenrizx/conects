@@ -14,7 +14,7 @@ export const login = async () => {
         await syncUserToBack4App(user);
 
         // Redirect to main page
-        window.location.href = 'index.php';
+        window.location.href = '/';
     } catch (error) {
         console.error("Login failed:", error);
         alert("Login failed: " + error.message);
@@ -26,7 +26,7 @@ export const logout = async () => {
     try {
         await signOut(auth);
         Parse.User.logOut();
-        window.location.href = 'login.php';
+        window.location.href = '/login';
     } catch (error) {
         console.error("Logout failed:", error);
         alert("Logout failed: " + error.message);
@@ -76,12 +76,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     onAuthStateChanged(auth, (user) => {
         const path = window.location.pathname;
-        const isLoginPage = path.includes('login.php');
+        const isLoginPage = path === '/login' || path.includes('login.php');
 
         if (user) {
             // User is signed in
             if (isLoginPage) {
-                window.location.href = 'index.php';
+                window.location.href = '/';
             } else {
                  // Ensure Parse user is logged in
                  const currentUser = Parse.User.current();
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             // User is signed out
             if (!isLoginPage) {
-                window.location.href = 'login.php';
+                window.location.href = '/login';
             }
         }
     });

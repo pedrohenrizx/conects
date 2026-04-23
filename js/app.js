@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Initial load
-    if (window.location.pathname.includes('index.php') || window.location.pathname === '/') {
+    if (window.location.pathname === '/') {
         // Wait a bit for auth to resolve
         setTimeout(() => {
             if(Parse.User.current()) {
