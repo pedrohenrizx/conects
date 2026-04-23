@@ -78,7 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
     onAuthStateChanged(auth, async (user) => {
         const path = window.location.pathname;
         const isLoginPage = path === '/login' || path.includes('login.php');
-        const globalLoader = document.getElementById('global-loader');
 
         if (user) {
             // User is signed in
@@ -103,21 +102,11 @@ document.addEventListener('DOMContentLoaded', () => {
                      avatarEl.src = currentUser.get('photoURL') || 'https://via.placeholder.com/40';
                      nameEl.textContent = currentUser.get('displayName') || currentUser.get('username');
                  }
-
-                 if (globalLoader) {
-                     globalLoader.classList.add('opacity-0');
-                     setTimeout(() => globalLoader.classList.add('hidden'), 300);
-                 }
             }
         } else {
             // User is signed out
             if (!isLoginPage) {
                 window.location.href = '/login';
-            } else {
-                if (globalLoader) {
-                     globalLoader.classList.add('opacity-0');
-                     setTimeout(() => globalLoader.classList.add('hidden'), 300);
-                 }
             }
         }
     });
