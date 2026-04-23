@@ -1,4 +1,5 @@
 import { auth, provider, signInWithPopup, signOut, onAuthStateChanged } from './config.js';
+import { showToast } from './toast.js';
 
 // Elements
 const loginBtn = document.getElementById('login-btn');
@@ -17,7 +18,7 @@ export const login = async () => {
         window.location.href = '/';
     } catch (error) {
         console.error("Login failed:", error);
-        alert("Login failed: " + error.message);
+        showToast("Falha ao fazer login: " + error.message, 'error');
     }
 };
 
@@ -29,7 +30,7 @@ export const logout = async () => {
         window.location.href = '/login';
     } catch (error) {
         console.error("Logout failed:", error);
-        alert("Logout failed: " + error.message);
+        showToast("Falha ao sair: " + error.message, 'error');
     }
 };
 
@@ -74,9 +75,10 @@ document.addEventListener('DOMContentLoaded', () => {
         logoutBtn.addEventListener('click', logout);
     }
 
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, async (user) => {
         const path = window.location.pathname;
         const isLoginPage = path === '/login' || path.includes('login.php');
+        const globalLoader = document.getElementById('global-loader');
 
         if (user) {
             // User is signed in
@@ -84,16 +86,54 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.location.href = '/';
             } else {
                  // Ensure Parse user is logged in
-                 const currentUser = Parse.User.current();
+                 let currentUser = Parse.User.current();
                  if (!currentUser) {
-                     syncUserToBack4App(user);
+                     await syncUserToBack4App(user);
+                     currentUser = Parse.User.current();
+                 }
+
+                 // Update Header UI
+                 const profileMenu = document.getElementById('user-profile-menu');
+                 const avatarEl = document.getElementById('header-user-avatar');
+                 const nameEl = document.getElementById('header-user-name');
+
+                 if (profileMenu && currentUser) {
+                     profileMenu.classList.remove('hidden');
+                     profileMenu.classList.add('flex');
+                     avatarEl.src = currentUser.get('photoURL') || 'https://via.placeholder.com/40';
+                     nameEl.textContent = currentUser.get('displayName') || currentUser.get('username');
+                 }
+
+                 if (globalLoader) {
+                     globalLoader.classList.add('opacity-0');
+                     setTimeout(() => globalLoader.classList.add('hidden'), 300);
                  }
             }
         } else {
             // User is signed out
             if (!isLoginPage) {
                 window.location.href = '/login';
+            } else {
+                if (globalLoader) {
+                     globalLoader.classList.add('opacity-0');
+                     setTimeout(() => globalLoader.classList.add('hidden'), 300);
+                 }
             }
         }
     });
+
+    // Back to top logic
+    const backToTopBtn = document.getElementById('back-to-top');
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+            }
+        });
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 });

@@ -36,8 +36,6 @@ if (array_key_exists($path, $routes)) {
 } else {
     // 404 Not Found
     http_response_code(404);
-    echo "<h1>404 Not Found</h1>";
-    echo "<p>The page you requested could not be found.</p>";
-    echo "<a href='/'>Go back to Home</a>";
+    require __DIR__ . '/views/404.php';
 }
 ?>
